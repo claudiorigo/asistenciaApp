@@ -1,0 +1,6 @@
+* Inicio de proyecto
+> ionic start asistenciaApp tabs
+> Angular
+* Intalar CLI de ionic
+> npm install -g @ionic/cli
+> npm i
