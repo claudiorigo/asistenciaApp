@@ -4,3 +4,22 @@
 * Intalar CLI de ionic
 > npm install -g @ionic/cli
 > npm i
+* Carga a repositorio GitHub
+* Crear carpetas page, service, guard, interface, module
+> ionic g page pages/inicio
+> ionic g page pages/not-found
+> ionic g page pages/login
+> ionic g page pages/menu
+> ionic g page pages/restablecer
+> ionic g service services/alert --skipTests=true
+> ionic g service services/api --skipTests=true
+> ionic g service services/storage --skipTests=true
+* Crear Guard para usuario, restringin entrada por token
+> ionic g guard guards/usuario
+* Agregar Storage al proyecto
+> npm i @ionic/storage
+> npm i @ionic/storage-angular
+-----------------------------------------------------------
+* Crear components para capturar datos de usuarios
+> ionic g c components/usuarios
+
