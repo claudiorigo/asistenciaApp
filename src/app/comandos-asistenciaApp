@@ -20,6 +20,29 @@
 > npm i @ionic/storage
 > npm i @ionic/storage-angular
 -----------------------------------------------------------
-* Crear components para capturar datos de usuarios
+* Crear components para capturar datos de todos los Usuarios
 > ionic g c components/usuarios
 > ionic g module components/component
+-----------------------------------------------------------
+* Instalar ionic Native para leer QR y codeBar
+> npm install @ionic-native/core --save
+* Instalacion de Barcode Scanner
+> npm install phonegap-plugin-barcodescanner
+> npm install @ionic-native/barcode-scanner
+* Leer código QR desde el dispositivo móvil con android de la Camara
+> npm install @ionic-native/camera
+-----------------------------------------------------------
+* Instalar InAppBrowse para navegar en la app de forma nativa
+> npm install @ionic-native/in-app-browser
+
+app.module.ts
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+providers: [BarcodeScanner,InAppBrowser,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }]
+
+services>storage.service.ts
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+constructor( private inAppBrowser: InAppBrowser ) {}
+-----------------------------------------------------------
+* Crear components para capturar datos de un solo Usuario
+> ionic g c components/usuario
+

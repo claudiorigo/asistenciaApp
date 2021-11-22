@@ -13,11 +13,10 @@ import { NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   usuarios: Usuarios[] = [];
-  loginAlumno = {
+  loginUsuario = {
     email: '',
     password: ''
   };
-
 
   constructor(
     private storageService: StorageService,
@@ -30,13 +29,9 @@ export class LoginPage implements OnInit {
   }
 
   async login(fLogin: NgForm){
-
-
-    if ( fLogin.invalid ) { return this.alert.alertaInformacion('Campos Vacios'); }
-
-    const valido  = await this.storageService.inicioSesion(this.loginAlumno.email, this.loginAlumno.password);
+    if ( fLogin.invalid ) { return this.alert.alertaInformacion('Campos Vacios');}
+    const valido  = await this.storageService.inicioSesion(this.loginUsuario.email, this.loginUsuario.password);
     console.log(valido);
-
     if ( valido ) {
       this.alert.loadInicio("Cargando su sesión");
       //this.guardarToken(this.loginUser.email);
@@ -48,14 +43,6 @@ export class LoginPage implements OnInit {
       //this.token = null;
       //this.storage.remove('token');
     }
-
-
-
-
-
-
-
-
   }
 
 

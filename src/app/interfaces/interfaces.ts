@@ -11,3 +11,4 @@ export interface Usuarios{
   seccion: string;
 
 }
+
