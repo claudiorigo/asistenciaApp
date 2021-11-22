@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { Usuarios } from '../interfaces/interfaces';
 import { ApiService } from './api.service';
@@ -15,8 +14,7 @@ export class StorageService {
 
   constructor(
     private apiService: ApiService,
-    private storage: Storage,
-    private router: Router
+    private storage: Storage
   ) {
     this.init();
   }
@@ -27,6 +25,7 @@ export class StorageService {
     this.guardarUsuarioStorage();
   }
 
+  //Guardar Usuarios desde Api con subscribe a Storage
   guardarUsuarioStorage(){
     this.apiService.getUsuarios().subscribe( async respuesta => {
       this.usuarios = respuesta;
@@ -34,21 +33,35 @@ export class StorageService {
     });
   }
 
-
+  //Cargar Usuarios
   async cargarUsuariosStorage(){
     this.usuarios = (await this.storage.get('usuarios')) || [];
     return this.usuarios;
   }
 
+  //Login Inicio Sesión
+  async inicioSesion(email: any, password: any){
+    var valido: boolean = false;
+    this.usuarios.forEach(usuario => {
+      if (usuario.email == email && usuario.password == password) {
+        valido = true;
+        console.log('Exito ', usuario.nombre)
+      }
+    });
+    return valido;
+  }
 
-  async cargarUsuarioActual(){
+
+
+
+  /* async cargarUsuarioActual(){
     this.usuarios = (await this.storage.get('usuarios')) || [];
     this.usuarios.forEach(usuario => {
       if (usuario.email == "claudiorigo@gmail.com") {
           return usuario
       }
     });
-  }
+  } */
 
 
 

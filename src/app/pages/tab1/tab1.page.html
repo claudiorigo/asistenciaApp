@@ -13,14 +13,7 @@
 
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-
-  <ion-list *ngFor="let usuario of usuarios">
-    <ion-item >
-      <ion-label>{{usuario.nombre}}</ion-label>
-    </ion-item>
-  </ion-list>
-
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <app-usuarios *ngFor="let usuario of usuarios" [usuario]="usuario"></app-usuarios>
 
 </ion-content>

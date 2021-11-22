@@ -22,4 +22,4 @@
 -----------------------------------------------------------
 * Crear components para capturar datos de usuarios
 > ionic g c components/usuarios
-
+> ionic g module components/component

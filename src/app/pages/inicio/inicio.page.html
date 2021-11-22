@@ -1,9 +1,31 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-title>
+      RegistroApp
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center" color="dark">
+  <img src="../../assets/logo.png" class="logo" />
+  <ion-header collapse="condense">
 
-<ion-content>
+  </ion-header>
+  <br>
+  <ion-button [routerLink]="['/login']" expand="block" color="light">Ingresar al Sistema</ion-button>
 
+  <div id="container">
+    <strong>Bienvenido de Asistencia</strong>
+    <p>PROGRAMACIÓN DE APLICACIONES MÓVILES</p>
+
+  </div>
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-text-center">
+      <strong>Claudio Rigollet - Ayrton Vergara  PGY4121-002V</strong>
+      <p>GitHub <a target="_blank" rel="noopener noreferrer" href="https://github.com/claudiorigo/asistenciaApp">Repositorio UI v0.0.1</a></p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

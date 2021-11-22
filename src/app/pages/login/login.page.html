@@ -1,10 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!--
+<app-usuarios *ngFor="let usuario of usuarios"
+                [usuario]="usuario">
+  </app-usuarios>
+-->
+<ion-app>
+  <ion-header>
+    <ion-toolbar class="new-background-color">
+      <ion-title>Iniciar Sesión</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+
+  <ion-content class="ion-padding">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col>
+          <div>
+            <img src="assets\img\duocvina.jpg"/>
+            <form (ngSubmit)="login( fLogin )"  #fLogin="ngForm">
+
+              <ion-item lines="full">
+                <ion-label position="floating">Usuario</ion-label> <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
+                <ion-input  [(ngModel)]="loginAlumno.email" name="usuario" type="text" required></ion-input>
+
+              </ion-item>
+              <ion-item lines="full">         <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
+                <ion-label position="floating">Password</ion-label>
+                <ion-input [(ngModel)]="loginAlumno.password" name="password" type="password" required></ion-input>
 
 
-</ion-content>
+              </ion-item>
+              <ion-row>
+                <ion-col>           <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
+                  <ion-button [disabled]="fLogin.invalid" type="submit" expand="full" >Ingresar</ion-button>
+                  <a [routerLink]="['/forgot-password']" class="small-text" style="color:red; font-size:small">Olvidó la contraseña?</a>
+                </ion-col>
+              </ion-row>
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <div class="ion-text-center"><img src="assets\img\logo.png"/></div>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-app>
+
