@@ -7,7 +7,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [UsuarioComponent],
   exports: [UsuariosComponent, UsuarioComponent],
   imports: [
     CommonModule,

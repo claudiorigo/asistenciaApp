@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
 import { Registro } from '../models/registro.model';
 import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,8 @@ export class StorageService {
     private apiService: ApiService,
     private storage: Storage,
     private navController: NavController,
-    private inAppBrowser: InAppBrowser
+    private inAppBrowser: InAppBrowser,
+    private alertService: AlertService
   ) {
     this.init();
   }
@@ -59,6 +61,11 @@ export class StorageService {
     this.usuarioActual = (await this.storage.get('usuarioActual')) || null;
     return this.usuarioActual;
   }
+  //Cargar Registros Asistencia
+  async cargarRegistroAsistencia(){
+    this.guardados = (await this.storage.get('registros')) || null;
+    return this.guardados;
+  }
 
   //Login Inicio Sesión
   async inicioSesion(email: any, password: any){
@@ -78,7 +85,29 @@ export class StorageService {
       }
     });
     this._storage.set('usuarioActual', this.usuarioActual);
+    this.alertService.loadInicio("Cargando");
     return valido;
+  }
+
+  //Restablecer Password
+  async restablecerPassword(email: string){
+    this.usuarios = (await this.storage.get('usuarios')) || [];
+    var valido: boolean = false;
+    this.usuarios.forEach(usuario => {
+      if (usuario.email == email) {
+        valido = true;
+      }
+    });
+
+    if (valido) {
+      this.navController.navigateRoot( '/login', { animated: true } );
+      this.alertService.alertaInformacion('Correo enviado revise su bandeja de entrada');
+      console.log('Correo enviado revise su bandeja de entrada');
+    }else{
+      console.log('Correo electrónico', email,' no existe ');
+      this.alertService.correoInvalido( 'Correo electrónico '+email+' no existe')
+    }
+
   }
 
   //Registrar Barcode QR
@@ -90,67 +119,18 @@ export class StorageService {
     this.abrirRegistro( nuevoRegistro );
   }
 
-
-  abrirRegistro(registro : Registro){
+  abrirRegistro(registro: Registro){
     //this.navController.navigateForward('/tabs/tab2');
     switch ( registro.type ){
       case 'user':
         this.navController.navigateForward('/tabs/tab2');
+        this.alertService.presentToast('Registro Guardado');
       break;
       case 'http':
         this.inAppBrowser.create( registro.text, '_system');
       break;
     }
   }
-
-
-
-
-
-
-
-  /* async cargarUsuarioActual(){
-    this.usuarios = (await this.storage.get('usuarios')) || [];
-    this.usuarios.forEach(usuario => {
-      if (usuario.email == "claudiorigo@gmail.com") {
-          return usuario
-      }
-    });
-  } */
-
-
-
-
-
-
-
-  async usuariosOnline(email: string){
-    this.usuarios = (await this.storage.get('usuarios')) || [];
-    this.usuarios.forEach(usuario => {
-      if (usuario.email == email) {
-          console.log('SI ES VALIDO: ',usuario.email);
-          return true;
-      }
-    });
-  }
-
-  async UsuarioActual(){
-    this.usuarios = (await this.storage.get('usuarios')) || [];
-
-    this.usuarios.forEach(usuario => {
-      if (usuario.email == "fran.herrera@gmail.com") {
-          //return usuario.nombre;
-          console.log("desde UsuarioActual ",usuario.id)
-      }
-
-    });
-  }
-
-
-
-
-
-
 
 
 

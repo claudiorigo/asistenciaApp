@@ -15,7 +15,6 @@ export class AlertService {
 
 
   async alertaInformacion( message: string ){
-
     const alert = await this.alertController.create({
       message,
       buttons: ['Aceptar']
@@ -26,7 +25,6 @@ export class AlertService {
 
   async presentToast(  message: string ){
     const toast = await this.toastController.create({
-
       message,
       position: 'top',
       duration: 1500
@@ -34,7 +32,14 @@ export class AlertService {
     toast.present();
   };
 
-
+  async correoInvalido(  message: string ){
+    const toast = await this.toastController.create({
+      message,
+      position: 'bottom',
+      duration: 3500
+    });
+    toast.present();
+  };
 
   async loadInicio( message: string ){
     const loading = await this.loadingController.create({
@@ -42,15 +47,8 @@ export class AlertService {
       duration: 2000
     });
     await loading.present();
-
-
-    await this.storage.get("users");
-
-
-
+    //await this.storage.get("users");
     loading.dismiss();
-
-
   }
 
 

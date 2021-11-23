@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-restablecer',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestablecerPage implements OnInit {
 
-  constructor() { }
+  email: string =  '';
+
+  constructor(
+    private storageService: StorageService
+  ) { }
 
   ngOnInit() {
+
+  }
+
+  async restablecerPassword(){
+    await this.storageService.restablecerPassword( this.email);
+    this.email = '';
   }
 
 }
