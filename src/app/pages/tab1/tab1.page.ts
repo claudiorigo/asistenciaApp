@@ -17,7 +17,6 @@ export class Tab1Page implements OnInit{
   usuarioActual: {} = {};
   dateTime: Observable<Date>
 
-
   constructor(
     private barcodeScanner: BarcodeScanner,
     private storageService: StorageService,
@@ -29,9 +28,11 @@ export class Tab1Page implements OnInit{
       if( !barcodeData.cancelled ){
         this.storageService.guardarRegistro( barcodeData.format, barcodeData.text );
       }
-    }).catch(err => {
-        this.storageService.guardarRegistro( 'QRCode', 'user{id: 1 , nombre: "Claudio Rigollet",email: "claudiorigo@gmail.com",password: "123456",horario: "Vespertino",sede: "Viña del Mar",telefono: "+569 54422 3550",seccion: "V002"}');
-        //this.storageService.guardarRegistro( 'QRCode', 'https://ionicframework.com');
+    }).catch(err => {      
+      this.storageService.guardarRegistro( 'QRCode','docente{id: 1, profesor: "Ajelandra Gutierrez", avatar: "../assets/avatars/av-do-2.png", asignatura: "Programación Base de Datos", seccion: "V001", correo: "ale.gutierrez@docente.duoc.cl", asiste: true}');
+      //this.storageService.guardarRegistro( 'QRCode','docente{id: 1, profesor: "Nancy Pérez", avatar: "../assets/avatars/av-do-1.png", asignatura: "Programación de aplicaciones móviles", seccion: "V002", correo: "nan.perez@docente.duoc.cl", asiste: true}');
+      //this.storageService.guardarRegistro( 'QRCode', 'user{id: 1 , nombre: "Claudio Rigollet",email: "claudiorigo@gmail.com",password: "123456",horario: "Vespertino",sede: "Viña del Mar",telefono: "+569 54422 3550",seccion: "V002"}');
+      //this.storageService.guardarRegistro( 'QRCode', 'https://ionicframework.com');
     });
   }
 

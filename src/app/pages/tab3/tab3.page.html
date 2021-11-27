@@ -1,12 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Información de Docente
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <h3>Tabs 3</h3>
+<ion-content class="ion-no-padding">
+  
+  <ion-list class="ion-no-padding">
+    <ion-item lines="none" class="ion-text-center">
+
+      <ion-label>
+        <h1>{{docenteActual.profesor}}</h1>
+      </ion-label>
+
+      <ion-thumbnail slot="start">
+        <img src="../../{{docenteActual.avatar }}">
+      </ion-thumbnail>
+      
+      
+    </ion-item>
+
+    <ion-item lines="none">      
+      <h4>Correo: {{docenteActual.correo}}</h4>      
+    </ion-item>
+
+    <ion-item lines="none">
+      <h6>Asignatura: {{docenteActual.asignatura}}</h6>
+    </ion-item>
+
+    <ion-item>
+      <h3 class="ion-text-center">Sección: {{docenteActual.seccion}}</h3>
+    </ion-item>
+    
+
+
+
+  </ion-list>
 
 </ion-content>

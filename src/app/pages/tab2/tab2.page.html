@@ -3,12 +3,20 @@
     <!--
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+      *ngIf="guardados.length == 0"
     </ion-buttons>
     -->
     <ion-title slot="start">
       <ion-label>Registro Asistencia </ion-label>
-      <ion-badge>{{storageService.guardados.length}}</ion-badge>
+      <ion-badge> {{storageService.guardados.length}}</ion-badge>
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="enviarCorreo()" color="dark">
+        <ion-icon slot="icon-only" name="send"></ion-icon>        
+      </ion-button>
+    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -26,8 +34,8 @@
             <h3>{{usuarioActual.email}}</h3>
           </ion-label>
         </ion-chip>
-        <h6>{{registro.text}}</h6>
-        <p>{{ registro.created | date: 'medium'}}</p>
+        <p>Profesor: {{docenteActual.profesor}} Sección: {{docenteActual.seccion}}</p>
+        <h6>{{ registro.created | date: 'medium'}}</h6>
       </ion-label>
     </ion-item>
   </ion-list>

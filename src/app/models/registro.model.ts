@@ -3,7 +3,7 @@ export class Registro {
   public text: string;
   public type: string;
   public icon: string;
-  public created: Date;
+  public created: Date;  
 
   constructor(format: string, text: string) {
 
@@ -28,7 +28,12 @@ export class Registro {
 
       case 'user':
         this.type = 'user';
-        this.icon = 'person-outline';
+        this.icon = 'school-outline';
+      break;
+
+      case 'doce':
+        this.type = 'doce';
+        this.icon = 'person-circle-outline';        
       break;
 
       case 'geo:':

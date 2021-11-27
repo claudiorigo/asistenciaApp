@@ -25,6 +25,12 @@ export class ApiService {
     );
   }
 
+  getDocentes():Observable<any>{
+    return this.http.get(environment.apiUrl + '/docente/').pipe(
+      retry(3)
+    );
+  }
+
 
 
 }
