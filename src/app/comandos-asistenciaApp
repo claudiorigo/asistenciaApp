@@ -45,4 +45,14 @@ constructor( private inAppBrowser: InAppBrowser ) {}
 -----------------------------------------------------------
 * Crear components para capturar datos de un solo Usuario
 > ionic g c components/usuario
-
+* Para instalar Native File y poder determinar donde esta el archivo en mi dispositivo
+https://ionicframework.com/docs/native/file
+> npm install cordova-plugin-file
+> npm install @ionic-native/file
+// linea de codigo a cambiar en Android Studio
+De este error : import android.support.v4.content.FileProvider;
+Cambiar a este directorio: import androidx.core.content.FileProvider;
+---------------------------------------------------------------
+* Para instalar Native Email 
+npm install cordova-plugin-email-composer
+npm install @ionic-native/email-composer
