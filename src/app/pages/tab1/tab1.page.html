@@ -15,7 +15,7 @@
 <ion-content [fullscreen]="true">
 
   <app-usuario  [usuarioActual]="usuarioActual"></app-usuario>
-
+  
 
   <ion-slides [options]="swiperOpts">
     <ion-slide>
@@ -28,9 +28,11 @@
 
   <ion-list>
     <ion-item >
-      <ion-label class="xx-large">{{ dateTime | async | date:'shortTime' }}</ion-label>
+      <ion-label class="large">{{ dateTime | async | date:'shortTime' }}</ion-label>
       <p class="large">{{ dateTime | async | date }}</p>
     </ion-item>
   </ion-list>
+
+  
 
 </ion-content>

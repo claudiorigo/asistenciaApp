@@ -1,3 +1,4 @@
+import { Registro } from '../models/registro.model';
 export interface Usuarios{
   id: number;
   nombre: string;
@@ -8,6 +9,7 @@ export interface Usuarios{
   horario: string;
   sede: string;
   seccion: string;
+  registro: Registro [];
 }
 
 export interface Docentes{
@@ -19,4 +21,6 @@ export interface Docentes{
   correo: string;
   asiste: boolean; 
 }
+
+
 

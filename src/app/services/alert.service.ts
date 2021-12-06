@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class AlertService {
     public alertController: AlertController,
     public toastController: ToastController,
     private loadingController: LoadingController,
+    private navController: NavController,
     private storage: Storage) { }
 
 
@@ -41,6 +42,15 @@ export class AlertService {
     toast.present();
   };
 
+  async registroInvalido(  message: string ){
+    const toast = await this.toastController.create({
+      message,
+      position: 'bottom',
+      duration: 3500
+    });
+    toast.present();
+  };
+
   async loadInicio( message: string ){
     const loading = await this.loadingController.create({
       message,
@@ -49,6 +59,32 @@ export class AlertService {
     await loading.present();
     //await this.storage.get("users");
     loading.dismiss();
+  }
+  
+  //Metodo Salir de Menú
+  async salirApp(){
+    const alert = await this.alertController.create({
+      header: 'Salir',
+      message: '¿Seguro que deseas salir de la aplicación?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            this.storage.remove("valido");
+            this.storage.remove("token");
+            this.storage.remove("usuarioActual");
+            this.navController.navigateRoot('/login');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 

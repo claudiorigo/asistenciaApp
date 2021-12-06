@@ -6,13 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./usuarios.component.scss'],
 })
 export class UsuariosComponent implements OnInit {
-  @Input() usuario;
+  @Input() usuario: any;
+  
   constructor() {}
-
-  ngOnInit() {
-
-  }
-
-
-
+  ngOnInit() {}
 }

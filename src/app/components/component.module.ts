@@ -4,8 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
-
-
 @NgModule({
   declarations: [UsuarioComponent],
   exports: [UsuariosComponent, UsuarioComponent],

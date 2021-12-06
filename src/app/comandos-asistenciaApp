@@ -31,6 +31,9 @@
 > npm install @ionic-native/barcode-scanner
 * Leer código QR desde el dispositivo móvil con android de la Camara
 > npm install @ionic-native/camera
+// Chequear si funciona @ionic-native/camera si no Install Cordova plugin
+> ionic cordova plugin add cordova-plugin-camera → (Pendiente)
+
 -----------------------------------------------------------
 * Instalar InAppBrowse para navegar en la app de forma nativa
 > npm install @ionic-native/in-app-browser
@@ -45,4 +48,31 @@ constructor( private inAppBrowser: InAppBrowser ) {}
 -----------------------------------------------------------
 * Crear components para capturar datos de un solo Usuario
 > ionic g c components/usuario
+-----------------------------------------------------------
+* Implementar modulo para enviar correos
+* Para instalar Native File y poder determinar donde esta el archivo en mi dispositivo
+https://ionicframework.com/docs/native/file
+> npm install cordova-plugin-file
+> npm install @ionic-native/file
+// linea de codigo a cambiar en Android Studio
+De este error : import android.support.v4.content.FileProvider;
+Cambiar a este directorio: import androidx.core.content.FileProvider;
+---------------------------------------------------------------
+* Para instalar Native Email 
+> npm install cordova-plugin-email-composer
+> npm install @ionic-native/email-composer
+---------------------------------------------------------------
+* Generar APK sin firmar 
+> ionic capacitor build android --prod --release
+* ó generar directamente desde Android Studio 
+Build > Build Bundle(s) > APK(s) > Build APK(s)
+C:\Users\<name-user>\Documents\ionic\asistenciaApp\android\app\build\outputs\apk\debug
+* Generar APK con firma
+> Desde Android Studio 
+Build > Generate Signed Bundle / APK... > APK Next > Create new...
+* Importante de guardar Registro en lugar que no se pierda
+* En este caso seleccione carpeta de proyecto y cree carpeta Android_Key y con nombre de archivo del proyecto AsistenciaApp y OK
+> Alias: asistenciaApp > password: DuocUC2021 > password key: DuocUC2021RIGO
+> year 25 > llenar demas datos
+
 

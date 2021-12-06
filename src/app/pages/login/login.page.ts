@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
       this.alert.loadInicio("Cargando su sesión");
       //this.guardarToken(this.loginUser.email);
       //this.storage.set('valido', valido)
-      this.navController.navigateRoot( '/tabs/tab1', { animated: true } );
+      this.navController.navigateRoot( '/menu/tabs/tab1', { animated: true } );
     } else {
       this.navController.navigateRoot('/login')
       this.alert.alertaInformacion('Usuario y contraseña no son correctos.');

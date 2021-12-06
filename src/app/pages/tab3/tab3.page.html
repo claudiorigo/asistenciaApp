@@ -1,37 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+
     <ion-title>
       Información de Docente
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-no-padding">
+<ion-content class="ion-padding">
   
-  <ion-list class="ion-no-padding">
+  <ion-list class="ion-no-padding" *ngFor="let registro of guardados">
     <ion-item lines="none" class="ion-text-center">
 
       <ion-label>
-        <h1>{{docenteActual.profesor}}</h1>
+        <h1>{{registro.profesor}}</h1>
       </ion-label>
 
       <ion-thumbnail slot="start">
-        <img src="../../{{docenteActual.avatar }}">
+        <img src="../../{{registro.avatar }}">
       </ion-thumbnail>
       
       
     </ion-item>
 
     <ion-item lines="none">      
-      <h4>Correo: {{docenteActual.correo}}</h4>      
+      <h4>Correo: {{registro.correo}} {{registro.hora}}</h4>      
     </ion-item>
 
     <ion-item lines="none">
-      <h6>Asignatura: {{docenteActual.asignatura}}</h6>
+      <h6>Asignatura: {{registro.asignatura}}</h6>
     </ion-item>
 
     <ion-item>
-      <h3 class="ion-text-center">Sección: {{docenteActual.seccion}}</h3>
+      <h3 class="ion-text-center" >Sección: {{registro.seccion}}  Asistencia: 
+        <ion-icon *ngIf="registro.asiste" name="checkmark-done-outline" color="success" size="large"></ion-icon>
+        <ion-icon *ngIf="!registro.asiste" name="alert-circle-outline" color="warning" size="large"></ion-icon>
+      </h3>
     </ion-item>
     
 

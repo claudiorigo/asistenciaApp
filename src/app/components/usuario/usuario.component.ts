@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -9,14 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UsuarioComponent implements OnInit {
   @Input() usuarioActual;
 
-
   constructor() { }
-
-  ngOnInit() {
-
+  ngOnInit() {  
   }
 
-
-
-
+  
 }

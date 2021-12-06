@@ -9,15 +9,13 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class Tab2Page {
   usuarioActual: {} = {};
-  docenteActual: {} = {};
   guardados: Registro[] = [];
 
   constructor(
     private storageService: StorageService
   ) {
     this.cargarUsuarioActual();
-    this.cargarRegistroAsistencia();
-    this.cargarDocenteAcual();
+    this.cargarRegistroAsistencia();    
   }
 
   abrirRegistro( registro ){
@@ -27,17 +25,14 @@ export class Tab2Page {
   async cargarUsuarioActual():Promise<void>{
     this.usuarioActual = await this.storageService.cargarUsuarioActual();
   }
-
+  
   async cargarRegistroAsistencia():Promise<void>{    
     this.guardados = await this.storageService.cargarRegistroAsistencia();    
   }
-
-  async cargarDocenteAcual():Promise<void>{    
-    this.docenteActual = await this.storageService.cargarDocenteActual();    
-  }
-
+  
   enviarCorreo(){
-    console.log('Enviando correo respaldo...')
+    console.log('Enviando correo respaldo...');
+    this.storageService.enviarCorreo();
   }
 
 }

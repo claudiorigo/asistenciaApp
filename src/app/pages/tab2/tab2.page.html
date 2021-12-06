@@ -6,7 +6,11 @@
       *ngIf="guardados.length == 0"
     </ion-buttons>
     -->
-    <ion-title slot="start">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>
       <ion-label>Registro Asistencia </ion-label>
       <ion-badge> {{storageService.guardados.length}}</ion-badge>
     </ion-title>
@@ -23,9 +27,10 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let registro of storageService.guardados" (click)="abrirRegistro( registro )" detail>
-      <ion-icon slot="start" [name]="registro.icon" color="primary"></ion-icon>
+      
       <ion-label>
-        <h1> {{usuarioActual.nombre}}</h1>
+        
+        <h1> <sub><ion-icon slot="start" [name]="registro.icon" size="large" color="primary"></ion-icon></sub> {{usuarioActual.nombre}}</h1>
         <ion-chip>
           <ion-avatar>
             <img src="../../{{usuarioActual.avatar }}">
@@ -33,8 +38,10 @@
           <ion-label>
             <h3>{{usuarioActual.email}}</h3>
           </ion-label>
-        </ion-chip>
-        <p>Profesor: {{docenteActual.profesor}} Sección: {{docenteActual.seccion}}</p>
+        </ion-chip>        
+        <p>Profesor: {{ registro.profesor }}</p>
+        <p>Asignatura: {{ registro.asignatura }} - {{ registro.seccion }}</p>
+        <p><ion-text color="success">{{ registro.text}}</ion-text></p>
         <h6>{{ registro.created | date: 'medium'}}</h6>
       </ion-label>
     </ion-item>
