@@ -48,8 +48,11 @@ constructor( private inAppBrowser: InAppBrowser ) {}
 -----------------------------------------------------------
 * Crear components para capturar datos de un solo Usuario
 > ionic g c components/usuario
+<<<<<<< HEAD
 -----------------------------------------------------------
 * Implementar modulo para enviar correos
+=======
+>>>>>>> 2e01d329000999d292e1b1af6d0e8ca3df7a1ebd
 * Para instalar Native File y poder determinar donde esta el archivo en mi dispositivo
 https://ionicframework.com/docs/native/file
 > npm install cordova-plugin-file
@@ -59,6 +62,7 @@ De este error : import android.support.v4.content.FileProvider;
 Cambiar a este directorio: import androidx.core.content.FileProvider;
 ---------------------------------------------------------------
 * Para instalar Native Email 
+<<<<<<< HEAD
 > npm install cordova-plugin-email-composer
 > npm install @ionic-native/email-composer
 ---------------------------------------------------------------
@@ -76,3 +80,7 @@ Build > Generate Signed Bundle / APK... > APK Next > Create new...
 > year 25 > llenar demas datos
 
 
+=======
+npm install cordova-plugin-email-composer
+npm install @ionic-native/email-composer
+>>>>>>> 2e01d329000999d292e1b1af6d0e8ca3df7a1ebd

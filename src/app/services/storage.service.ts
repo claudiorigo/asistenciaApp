@@ -14,6 +14,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 })
 export class StorageService {
   
+  valido: boolean = false;
   private _storage: Storage | null = null;
   usuarios: Usuarios[] = [];
   docentes: Docentes[] = [];
@@ -104,11 +105,26 @@ export class StorageService {
         this.usuarioActual.horario = usuario.horario
         this.usuarioActual.sede = usuario.sede
         this.usuarioActual.seccion = usuario.seccion
+        
+        this._storage.set('usuarioActual', this.usuarioActual);
+        this.valido = true;  
+        
       }
     });
-    this._storage.set('usuarioActual', this.usuarioActual);
+    
+    /****************************/
+    this.validarToken(this.valido);    
+    
     this.alertService.loadInicio("Cargando");
     return valido;
+  }
+
+  validarToken(token: boolean){
+    if (token) {
+      this._storage.set('valido', this.valido);
+    } else {
+      console.log('password o contraseña invalida')
+    }
   }
 
   //Restablecer Password
@@ -246,6 +262,8 @@ export class StorageService {
     // Send a text message using default options
     this.emailComposer.open(email);
   }
+
+  
 
 
 }

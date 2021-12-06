@@ -11,7 +11,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  valido: boolean = false;
   usuarios: Usuarios[] = [];
   loginUsuario = {
     email: '',
@@ -35,12 +35,11 @@ export class LoginPage implements OnInit {
     if ( valido ) {
       this.alert.loadInicio("Cargando su sesión");
       //this.guardarToken(this.loginUser.email);
-      //this.storage.set('valido', valido)
+      this.storageService.validarToken(this.valido);
       this.navController.navigateRoot( '/menu/tabs/tab1', { animated: true } );
     } else {
       this.navController.navigateRoot('/login')
-      this.alert.alertaInformacion('Usuario y contraseña no son correctos.');
-      //this.token = null;
+      this.alert.alertaInformacion('Usuario y contraseña no son correctos.');      
       //this.storage.remove('token');
     }
   }
